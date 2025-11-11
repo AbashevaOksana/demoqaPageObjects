@@ -100,6 +100,12 @@ public class RegistrationPage {
         tableResponsive.shouldHave(text("Izhevsk 15"));
         tableResponsive.shouldHave(text("NCR Delhi"));
     }
+    public void checkResult2 (String value, String female, String number){
+        tableResponsive.shouldHave(text("Oksana Abasheva"));
+        tableResponsive.shouldHave(text("Female"));
+        tableResponsive.shouldHave(text("9935275449"));
+
+    }
     public void closeLargeModal (){
         closeLarge.click();
     }
