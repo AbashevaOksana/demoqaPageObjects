@@ -121,30 +121,12 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage checkResult1 (String value, String mail, String female,
-                              String number, String s, String maths,
-                              String sports, String string, String s1, String ncrDelhi){
-        tableResponsive.shouldHave(text(value));
-        tableResponsive.shouldHave(text(mail));
-        tableResponsive.shouldHave(text(female));
-        tableResponsive.shouldHave(text(number));
-        tableResponsive.shouldHave(text(s));
-        tableResponsive.shouldHave(text(maths));
-        tableResponsive.shouldHave(text(sports));
-        tableResponsive.shouldHave(text(string));
-        tableResponsive.shouldHave(text(s1));
-        tableResponsive.shouldHave(text(ncrDelhi));
+    public RegistrationPage checkResult (String key, String value){
+        tableResponsive.$(byText(key)).parent().shouldHave(text(value)); // Student Name
 
         return this;
     }
-    public RegistrationPage checkResult2 (String value, String female, String number){
-        tableResponsive.shouldHave(text(value));
-        tableResponsive.shouldHave(text(female));
-        tableResponsive.shouldHave(text(number));
 
-        return this;
-
-    }
     public RegistrationPage closeLargeModal (){
 
         closeLarge.click();

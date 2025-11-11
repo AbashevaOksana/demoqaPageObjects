@@ -28,16 +28,16 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setState("NCR")
                 .setCity("Delhi")
                 .checkFormAppears();
-        registrationPage.checkResult1("Oksana Abasheva",
-                "abasheva@ya.ru",
-                "Female",
-                "9935275449",
-                "04 February,1983",
-                "Maths",
-                "Sports",
-                "photo_1.jpg",
-                "Izhevsk 15",
-                "NCR Delhi");
+        registrationPage.checkResult("Student Name", "Oksana Abasheva")
+                .checkResult("Student Email", "abasheva@ya.ru")
+                .checkResult("Gender", "Female")
+                .checkResult("Mobile", "9935275449")
+                .checkResult("Date of Birth", "04 February,1983")
+                .checkResult("Subjects", "Maths")
+                .checkResult("Hobbies", "Sports")
+                .checkResult("Picture", "photo_1.jpg")
+                .checkResult("Address", "Izhevsk 15")
+                .checkResult("State and City", "NCR Delhi");
         registrationPage.closeLargeModal();
 
     }
@@ -50,9 +50,10 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setGenderInput("Female")
                 .setUserNumber("9935275449")
                 .checkFormAppears();
-        registrationPage.checkResult2("Oksana Abasheva",
-                "Female",
-                "9935275449");
+        registrationPage.checkResult("Student Name", "Oksana Abasheva")
+                .checkResult("Gender", "Female")
+                .checkResult("Mobile", "9935275449");
+
         registrationPage.closeLargeModal();
 
     }
@@ -65,9 +66,10 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setGenderInput("Female")
                 .setUserNumber("9935275")
                 .checkFormAppears();
-        registrationPage.checkResult2("Oksana Abasheva",
-                "Female",
-                "9935275449");
+        registrationPage.checkResult("Student Name", "Oksana Abasheva")
+                .checkResult("Gender", "Female")
+                .checkResult("Mobile", "9935275449");
+
         registrationPage.closeLargeModal();
 
     }
