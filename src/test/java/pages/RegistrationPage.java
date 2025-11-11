@@ -40,46 +40,54 @@ public class RegistrationPage {
         executeJavaScript("$('footer').remove()");
     }
     public void setFirstName(String value){
+
         firstNameInput.setValue(value);
     }
     public void setLastName(String value){
+
         lastNameInput.setValue(value);
     }
     public void setUserEmail(String value){
+
         userEmailInput.setValue(value);
     }
-    public void setGenderInput (String female){
-        genderInput.$(byText("Female")).click();
+    public void setGenderInput (String value){
+        genderInput.$(byText(value)).click();
     }
     public void setUserNumber (String value){
+
         userNumberInput.setValue(value);
     }
-    public void setBirthDay (String week, String mounth, String year){
+    public void setBirthDay (String value, String mounth, String year){
         dateOfBirthInput.click();
-        reactDatepickerMonth.selectOption("February");
-        reactDatepickerYear.$(byText("1983")).click();
-        reactDatepickerWeek.$(byText("4")).click();
+        reactDatepickerMonth.selectOption(mounth);
+        reactDatepickerYear.$(byText(year)).click();
+        reactDatepickerWeek.$(byText(value)).click();
 
     }
     public void setSubjectsInput (String value){
+
         subjectsInput.setValue(value).pressEnter();
     }
     public void setHobbiesWrapper (String value){
-        hobbiesInput.$(byText("Sports")).click();
+
+        hobbiesInput.$(byText(value)).click();
     }
     public void setUploadPicture (String value){
-        uploadPicture.uploadFromClasspath("photo_1.jpg");
+
+        uploadPicture.uploadFromClasspath(value);
     }
     public void setCurrentAddress (String value){
+
         currentAddress.setValue(value);
     }
     public void setState (String value){
         state.click();
-        stateCity.$(byText("NCR")).click();
+        stateCity.$(byText(value)).click();
     }
     public void setCity (String value){
         city.click();
-        stateCity.$(byText("Delhi")).click();
+        stateCity.$(byText(value)).click();
     }
     public void checkFormAppears (){
         submit.click();
@@ -89,21 +97,21 @@ public class RegistrationPage {
     public void checkResult1 (String value, String mail, String female,
                               String number, String s, String maths,
                               String sports, String string, String s1, String ncrDelhi){
-        tableResponsive.shouldHave(text("Oksana Abasheva"));
-        tableResponsive.shouldHave(text("abasheva@ya.ru"));
-        tableResponsive.shouldHave(text("Female"));
-        tableResponsive.shouldHave(text("9935275449"));
-        tableResponsive.shouldHave(text("04 February,1983"));
-        tableResponsive.shouldHave(text("Maths"));
-        tableResponsive.shouldHave(text("Sports"));
-        tableResponsive.shouldHave(text("photo_1.jpg"));
-        tableResponsive.shouldHave(text("Izhevsk 15"));
-        tableResponsive.shouldHave(text("NCR Delhi"));
+        tableResponsive.shouldHave(text(value));
+        tableResponsive.shouldHave(text(mail));
+        tableResponsive.shouldHave(text(female));
+        tableResponsive.shouldHave(text(number));
+        tableResponsive.shouldHave(text(s));
+        tableResponsive.shouldHave(text(maths));
+        tableResponsive.shouldHave(text(sports));
+        tableResponsive.shouldHave(text(string));
+        tableResponsive.shouldHave(text(s1));
+        tableResponsive.shouldHave(text(ncrDelhi));
     }
     public void checkResult2 (String value, String female, String number){
-        tableResponsive.shouldHave(text("Oksana Abasheva"));
-        tableResponsive.shouldHave(text("Female"));
-        tableResponsive.shouldHave(text("9935275449"));
+        tableResponsive.shouldHave(text(value));
+        tableResponsive.shouldHave(text(female));
+        tableResponsive.shouldHave(text(number));
 
     }
     public void closeLargeModal (){
