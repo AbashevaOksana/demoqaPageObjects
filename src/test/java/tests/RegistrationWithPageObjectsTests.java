@@ -14,20 +14,20 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void fillFormTest() {
 
-        registrationPage.openPage();
-        registrationPage.setFirstName("Oksana");
-        registrationPage.setLastName("Abasheva");
-        registrationPage.setUserEmail("abasheva@ya.ru");
-        registrationPage.setGenderInput("Female");
-        registrationPage.setUserNumber("9935275449");
-        registrationPage.setBirthDay("4", "February", "1983");
-        registrationPage.setSubjectsInput("Maths");
-        registrationPage.setHobbiesWrapper("Sports");
-        registrationPage.setUploadPicture("photo_1.jpg");
-        registrationPage.setCurrentAddress("Izhevsk 15");
-        registrationPage.setState("NCR");
-        registrationPage.setCity("Delhi");
-        registrationPage.checkFormAppears();
+        registrationPage.openPage()
+                .setFirstName("Oksana")
+                .setLastName("Abasheva")
+                .setUserEmail("abasheva@ya.ru")
+                .setGenderInput("Female")
+                .setUserNumber("9935275449")
+                .setBirthDay("4", "February", "1983")
+                .setSubjectsInput("Maths")
+                .setHobbiesWrapper("Sports")
+                .setUploadPicture("photo_1.jpg")
+                .setCurrentAddress("Izhevsk 15")
+                .setState("NCR")
+                .setCity("Delhi")
+                .checkFormAppears();
         registrationPage.checkResult1("Oksana Abasheva",
                 "abasheva@ya.ru",
                 "Female",
@@ -44,12 +44,12 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void requiredParametersFillFormTest() {
 
-        registrationPage.openPage();
-        registrationPage.setFirstName("Oksana");
-        registrationPage.setLastName("Abasheva");
-        registrationPage.setGenderInput("Female");
-        registrationPage.setUserNumber("9935275449");
-        registrationPage.checkFormAppears();
+        registrationPage.openPage()
+                .setFirstName("Oksana")
+                .setLastName("Abasheva")
+                .setGenderInput("Female")
+                .setUserNumber("9935275449")
+                .checkFormAppears();
         registrationPage.checkResult2("Oksana Abasheva",
                 "Female",
                 "9935275449");
@@ -59,12 +59,12 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void negativeFillFormTest() {
 
-        registrationPage.openPage();
-        registrationPage.setFirstName("Anna");
-        registrationPage.setLastName("Abasheva");
-        registrationPage.setGenderInput("Female");
-        registrationPage.setUserNumber("9935275");
-        registrationPage.checkFormAppears();
+        registrationPage.openPage()
+                .setFirstName("Anna")
+                .setLastName("Abasheva")
+                .setGenderInput("Female")
+                .setUserNumber("9935275")
+                .checkFormAppears();
         registrationPage.checkResult2("Oksana Abasheva",
                 "Female",
                 "9935275449");

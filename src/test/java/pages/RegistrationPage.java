@@ -33,68 +33,95 @@ public class RegistrationPage {
         tableResponsive = $(".table-responsive"),
         closeLarge = $("#closeLargeModal");
 
-    public void openPage(){
+    public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+
+        return this;
     }
-    public void setFirstName(String value){
+    public RegistrationPage setFirstName(String value){
 
         firstNameInput.setValue(value);
+
+        return this;
     }
-    public void setLastName(String value){
+    public RegistrationPage setLastName(String value){
 
         lastNameInput.setValue(value);
+
+        return this;
     }
-    public void setUserEmail(String value){
+    public RegistrationPage setUserEmail(String value){
 
         userEmailInput.setValue(value);
+
+        return this;
     }
-    public void setGenderInput (String value){
+    public RegistrationPage setGenderInput (String value){
         genderInput.$(byText(value)).click();
+
+        return this;
     }
-    public void setUserNumber (String value){
+    public RegistrationPage setUserNumber (String value){
 
         userNumberInput.setValue(value);
+
+        return this;
     }
-    public void setBirthDay (String value, String mounth, String year){
+    public RegistrationPage setBirthDay (String value, String mounth, String year){
         dateOfBirthInput.click();
         reactDatepickerMonth.selectOption(mounth);
         reactDatepickerYear.$(byText(year)).click();
         reactDatepickerWeek.$(byText(value)).click();
 
+        return this;
     }
-    public void setSubjectsInput (String value){
+    public RegistrationPage setSubjectsInput (String value){
 
         subjectsInput.setValue(value).pressEnter();
+
+        return this;
     }
-    public void setHobbiesWrapper (String value){
+    public RegistrationPage setHobbiesWrapper (String value){
 
         hobbiesInput.$(byText(value)).click();
+
+        return this;
     }
-    public void setUploadPicture (String value){
+    public RegistrationPage setUploadPicture (String value){
 
         uploadPicture.uploadFromClasspath(value);
+
+        return this;
     }
-    public void setCurrentAddress (String value){
+    public RegistrationPage setCurrentAddress (String value){
 
         currentAddress.setValue(value);
+
+        return this;
     }
-    public void setState (String value){
+    public RegistrationPage setState (String value){
         state.click();
         stateCity.$(byText(value)).click();
+
+        return this;
     }
-    public void setCity (String value){
+    public RegistrationPage setCity (String value){
         city.click();
         stateCity.$(byText(value)).click();
+
+        return this;
     }
-    public void checkFormAppears (){
+    public RegistrationPage checkFormAppears (){
         submit.click();
         modal.should(appear);
         example.shouldHave(text("Thanks for submitting the form"));
+
+        return this;
     }
-    public void checkResult1 (String value, String mail, String female,
+    public RegistrationPage checkResult1 (String value, String mail, String female,
                               String number, String s, String maths,
                               String sports, String string, String s1, String ncrDelhi){
         tableResponsive.shouldHave(text(value));
@@ -107,14 +134,21 @@ public class RegistrationPage {
         tableResponsive.shouldHave(text(string));
         tableResponsive.shouldHave(text(s1));
         tableResponsive.shouldHave(text(ncrDelhi));
+
+        return this;
     }
-    public void checkResult2 (String value, String female, String number){
+    public RegistrationPage checkResult2 (String value, String female, String number){
         tableResponsive.shouldHave(text(value));
         tableResponsive.shouldHave(text(female));
         tableResponsive.shouldHave(text(number));
 
+        return this;
+
     }
-    public void closeLargeModal (){
+    public RegistrationPage closeLargeModal (){
+
         closeLarge.click();
+
+        return this;
     }
 }
