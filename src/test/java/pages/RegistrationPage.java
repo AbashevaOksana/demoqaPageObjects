@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -16,10 +17,7 @@ public class RegistrationPage {
         userEmailInput = $("#userEmail"),
         genderInput = $("#genterWrapper"),
         userNumberInput = $("#userNumber"),
-        dateOfBirthInput = $("#dateOfBirthInput"),
-        reactDatepickerMonth = $(".react-datepicker__month-select"),
-        reactDatepickerYear = $(".react-datepicker__year-select"),
-        reactDatepickerWeek = $(".react-datepicker__week"),
+        calendarInput = $("#dateOfBirthInput"),
         subjectsInput = $("#subjectsInput"),
         hobbiesInput = $("#hobbiesWrapper"),
         uploadPicture = $("#uploadPicture"),
@@ -32,6 +30,8 @@ public class RegistrationPage {
         example = $("#example-modal-sizes-title-lg"),
         tableResponsive = $(".table-responsive"),
         closeLarge = $("#closeLargeModal");
+
+    CalendarComponent calendarComponent =  new CalendarComponent();
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
@@ -71,10 +71,10 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setBirthDay (String value, String mounth, String year){
-        dateOfBirthInput.click();
-        reactDatepickerMonth.selectOption(mounth);
-        reactDatepickerYear.$(byText(year)).click();
-        reactDatepickerWeek.$(byText(value)).click();
+
+        calendarInput.click();
+        calendarComponent.setDay(value, mounth, year);
+
 
         return this;
     }
