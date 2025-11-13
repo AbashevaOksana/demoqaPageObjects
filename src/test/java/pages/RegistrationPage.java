@@ -34,7 +34,7 @@ public class RegistrationPage {
     CalendarComponent calendarComponent =  new CalendarComponent();
 
     public RegistrationPage openPage(){
-        open("/automation-practice-form");
+        //open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
 
