@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private SelenideElement
+    private final SelenideElement
         firstNameInput = $("#firstName"),
         lastNameInput = $("#lastName"),
         userEmailInput = $("#userEmail"),
@@ -36,8 +36,7 @@ public class RegistrationPage {
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+
 
         return this;
     }
@@ -90,7 +89,7 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage setUploadPicture (String value){
+    public RegistrationPage setUploadPicture (String strings){
 
         uploadPicture.uploadFromClasspath("photo_1.jpg");
 
