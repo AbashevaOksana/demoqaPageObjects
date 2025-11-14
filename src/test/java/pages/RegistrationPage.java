@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.CheckResultComponent;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -32,6 +33,7 @@ public class RegistrationPage {
         closeLarge = $("#closeLargeModal");
 
     CalendarComponent calendarComponent =  new CalendarComponent();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
 
     public RegistrationPage openPage(){
 
@@ -121,7 +123,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage checkResult (String key, String value){
-        tableResponsive.$(byText(key)).parent().shouldHave(text(value)); // Student Name
+        checkResultComponent.checkResultReady(key,  value); // Student Name
 
         return this;
     }
