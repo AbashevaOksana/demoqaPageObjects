@@ -6,18 +6,30 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomUtils {
 
     public static void main(String[] args) {
-        System.out.println(getRandomString(10));
+        System.out.println(getRandomStringName(10));
         System.out.println(getRandomEmail());
         System.out.println(getRandomAddress());
         System.out.println(getRandomInt(111, 9999999));
         System.out.println(getRandomPhone());
         System.out.println(getRandomGender());
+        System.out.println(getRandomStringNumber(10));
+        System.out.println(getRandomSubjectsInput());
+        System.out.println(getRandomHobbiesWrapper());
+        System.out.println(getRandomUploadPicture());
     }
 
 
-    public static String getRandomString(int len){
-//        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public static String getRandomStringName(int len){
         String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        SecureRandom rmd = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<len; i++)
+            sb.append(AB.charAt(rmd.nextInt(AB.length())));
+
+        return sb.toString();
+    }
+    public static String getRandomStringNumber(int len){
+        String AB = "0123456789";
         SecureRandom rmd = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i=0; i<len; i++)
@@ -27,10 +39,10 @@ public class RandomUtils {
     }
 
     public static String getRandomEmail() {
-        return getRandomString(10) + "@qa.guru";
+        return getRandomStringName(10) + "@qa.guru";
     }
     public static String getRandomAddress() {
-        return getRandomString(10) + " "+getRandomString(10)+" "+getRandomString(10);
+        return getRandomStringName(10) + " "+getRandomStringName(10)+" "+getRandomStringName(10);
     }
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max+1);
@@ -42,9 +54,21 @@ public class RandomUtils {
                 getRandomInt(111, 999), getRandomInt(11, 99), getRandomInt(11, 99));
 
     }
+
     public static String getRandomGender() {
         String[] genders = {"Male","Female","Other"};
         return getRandomItemFromArray(genders);
+
+    }
+    public static String getRandomSubjectsInput() {
+        String[] subjects = {"Maths","Accounting","Arts", "Social Studies", "Biology"};
+        return getRandomItemFromArray(subjects);
+
+    }
+
+    public static String getRandomHobbiesWrapper() {
+        String[] hobbies = {"Sports","Reading","Music"};
+        return getRandomItemFromArray(hobbies);
 
     }
     public static String getRandomItemFromArray(String[] array) {
@@ -53,5 +77,9 @@ public class RandomUtils {
 
     }
 
+    public static String getRandomUploadPicture() {
+        String[] picture = {"photo_1.jpg","photo_2.jpg","photo_3.jpg"};
+        return getRandomItemFromArray(picture);
 
+    }
 }

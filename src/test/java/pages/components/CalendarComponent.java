@@ -1,19 +1,31 @@
 package pages.components;
 
-import pages.RegistrationPage;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
 
-    public void setDay (String value, String mounth, String year){
+    public void setDay (String day, String month, String year){
 
-        $(".react-datepicker__month-select").selectOption(mounth);//
-        $(".react-datepicker__year-select").$(byText(year)).click();//
-        $(".react-datepicker__week").$(byText(value)).click();//
+            // Устанавливаем месяц и год
+            $(".react-datepicker__month-select").selectOption(month);
+            $(".react-datepicker__year-select").selectOption(year);
 
+            // Ждем обновления
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
 
+            // Ищем все дни текущего месяца и кликаем по нужному
+            $(".react-datepicker__month:not(.react-datepicker__month--outside-month)")
+                    .$(byText(day))
+                    .click();
+        }
     }
 
-}
+
+
+
+

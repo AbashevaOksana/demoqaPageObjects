@@ -8,16 +8,15 @@ import java.util.Locale;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static utils.RandomUtils.getRandomEmail;
-import static utils.RandomUtils.getRandomString;
+import static utils.RandomUtils.*;
 
 public class RegistrationWithRandomUtilsTests extends TestBase {
 
     @Test
     void fillFormTest() {
 
-        String firstName = getRandomString(10);
-        String lastName = getRandomString(10);
+        String firstName = getRandomStringName(10);
+        String lastName = getRandomStringName(10);
         String userEmail = getRandomEmail();
         String streetAddress = "";
 
@@ -28,7 +27,7 @@ public class RegistrationWithRandomUtilsTests extends TestBase {
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("abasheva@ya.ru");
+        $("#userEmail").setValue(userEmail);
         $("#gender-radio-2").parent().click();
         $("#userNumber").setValue("9935275449");
         $("#dateOfBirthInput").click();

@@ -7,9 +7,9 @@ import pages.components.CheckResultComponent;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
-public class RegistrationPage {
+public class RegistrationPageLast {
 
     private final SelenideElement
         firstNameInput = $("#firstName"),
@@ -34,99 +34,100 @@ public class RegistrationPage {
     CalendarComponent calendarComponent =  new CalendarComponent();
     CheckResultComponent checkResultComponent = new CheckResultComponent();
 
-    public RegistrationPage openPage(){
+    public RegistrationPageLast openPage(){
 
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
 
         return this;
     }
-    public RegistrationPage setFirstName(String value){
+    public RegistrationPageLast setFirstName(String value){
 
         firstNameInput.setValue(value);
 
         return this;
     }
-    public RegistrationPage setLastName(String value){
+    public RegistrationPageLast setLastName(String value){
 
         lastNameInput.setValue(value);
 
         return this;
     }
-    public RegistrationPage setUserEmail(String value){
+    public RegistrationPageLast setUserEmail(String value){
 
         userEmailInput.setValue(value);
 
         return this;
     }
-    public RegistrationPage setGenderInput (String value){
+    public RegistrationPageLast setGenderInput (String value){
         genderInput.$(byText(value)).click();
 
         return this;
     }
-    public RegistrationPage setUserNumber (String value){
+    public RegistrationPageLast setUserNumber (String value){
 
         userNumberInput.setValue(value);
 
         return this;
     }
+    public RegistrationPageLast setBirthDay (String value, String mounth, String year){
 
-    public RegistrationPage setBirthDay(String day, String month, String year) {
         calendarInput.click();
-        calendarComponent.setDay(day, month, year);
+        calendarComponent.setDay(value, mounth, year);
+
+
         return this;
     }
-
-    public RegistrationPage setSubjectsInput (String value){
+    public RegistrationPageLast setSubjectsInput (String value){
 
         subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
-    public RegistrationPage setHobbiesWrapper (String value){
+    public RegistrationPageLast setHobbiesWrapper (String value){
 
         hobbiesInput.$(byText(value)).click();
 
         return this;
     }
-    public RegistrationPage setUploadPicture (String picture){
+    public RegistrationPageLast setUploadPicture (String strings){
 
-        uploadPicture.uploadFromClasspath(picture);
+        uploadPicture.uploadFromClasspath("photo_1.jpg");
 
         return this;
     }
-    public RegistrationPage setCurrentAddress (String value){
+    public RegistrationPageLast setCurrentAddress (String value){
 
         currentAddress.setValue(value);
 
         return this;
     }
-    public RegistrationPage setState (String value){
+    public RegistrationPageLast setState (String value){
         state.click();
         stateCity.$(byText(value)).click();
 
         return this;
     }
-    public RegistrationPage setCity (String value){
+    public RegistrationPageLast setCity (String value){
         city.click();
         stateCity.$(byText(value)).click();
 
         return this;
     }
-    public RegistrationPage checkFormAppears (){
+    public RegistrationPageLast checkFormAppears (){
         submit.click();
         modal.should(appear);
         example.shouldHave(text("Thanks for submitting the form"));
 
         return this;
     }
-    public RegistrationPage checkResult (String key, String value){
+    public RegistrationPageLast checkResult (String key, String value){
         checkResultComponent.checkResultReady(key,  value); // Student Name
 
         return this;
     }
 
-    public RegistrationPage closeLargeModal (){
+    public RegistrationPageLast closeLargeModal (){
 
         closeLarge.click();
 

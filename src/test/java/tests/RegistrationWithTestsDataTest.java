@@ -20,7 +20,7 @@ public class RegistrationWithTestsDataTest extends TestBase {
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("abasheva@ya.ru");
+        $("#userEmail").setValue(userEmail);
         $("#gender-radio-2").parent().click();
         $("#userNumber").setValue("9935275449");
         $("#dateOfBirthInput").click();
