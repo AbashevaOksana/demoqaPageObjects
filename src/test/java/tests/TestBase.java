@@ -19,10 +19,4 @@ public class TestBase {
 
     }
 
-//      @BeforeEach
-//    void beforeEach() {
-//
-//        executeJavaScript("$('#fixedban').remove()");
-//        executeJavaScript("$('footer').remove()");
-//    }
 }
