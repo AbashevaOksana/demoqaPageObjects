@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.CheckResultComponent;
+import utils.JsUtils;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     private final SelenideElement
+        openInput = $(".practice-form-wrapper"),
         firstNameInput = $("#firstName"),
         lastNameInput = $("#lastName"),
         userEmailInput = $("#userEmail"),
@@ -36,9 +38,14 @@ public class RegistrationPage {
 
     public RegistrationPage openPage(){
 
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        open("/automation-practice-form");
+        openInput.shouldHave(text("Student Registration Form"));
 
 
+        return this;
+    }
+    public RegistrationPage delAds() {
+        JsUtils.removeBanners();
         return this;
     }
     public RegistrationPage setFirstName(String value){
