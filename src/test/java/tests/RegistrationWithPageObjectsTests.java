@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.CheckResultComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -10,6 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
 
     @Test
     void fillFormTest() {
@@ -27,19 +29,19 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setUploadPicture("photo_1.jpg")
                 .setCurrentAddress("Izhevsk 15")
                 .setState("NCR")
-                .setCity("Delhi")
-                .checkFormAppears();
-        registrationPage.checkResult("Student Name", "Oksana Abasheva")
-                .checkResult("Student Email", "abasheva@ya.ru")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "9935275449")
-                .checkResult("Date of Birth", "04 February,1983")
-                .checkResult("Subjects", "Maths")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "photo_1.jpg")
-                .checkResult("Address", "Izhevsk 15")
-                .checkResult("State and City", "NCR Delhi");
-        registrationPage.closeLargeModal();
+                .setCity("Delhi");
+        checkResultComponent.checkFormAppears()
+                .checkResultReady("Student Name", "Oksana Abasheva")
+                .checkResultReady("Student Email", "abasheva@ya.ru")
+                .checkResultReady("Gender", "Female")
+                .checkResultReady("Mobile", "9935275449")
+                .checkResultReady("Date of Birth", "04 February,1983")
+                .checkResultReady("Subjects", "Maths")
+                .checkResultReady("Hobbies", "Sports")
+                .checkResultReady("Picture", "photo_1.jpg")
+                .checkResultReady("Address", "Izhevsk 15")
+                .checkResultReady("State and City", "NCR Delhi");
+
 
     }
     @Test
@@ -49,13 +51,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setFirstName("Oksana")
                 .setLastName("Abasheva")
                 .setGenderInput("Female")
-                .setUserNumber("9935275449")
-                .checkFormAppears();
-        registrationPage.checkResult("Student Name", "Oksana Abasheva")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "9935275449");
-
-        registrationPage.closeLargeModal();
+                .setUserNumber("9935275449");
+        checkResultComponent.checkFormAppears()
+                .checkResultReady("Student Name", "Oksana Abasheva")
+                .checkResultReady("Gender", "Female")
+                .checkResultReady("Mobile", "9935275449");
 
     }
     @Test
@@ -65,13 +65,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setFirstName("Anna")
                 .setLastName("Abasheva")
                 .setGenderInput("Female")
-                .setUserNumber("9935275")
-                .checkFormAppears();
-        registrationPage.checkResult("Student Name", "Oksana Abasheva")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "9935275449");
-
-        registrationPage.closeLargeModal();
+                .setUserNumber("9935275");
+        checkResultComponent.checkFormAppears()
+                .checkResultReady("Student Name", "Oksana Abasheva")
+                .checkResultReady("Gender", "Female")
+                .checkResultReady("Mobile", "9935275449");
 
     }
 }

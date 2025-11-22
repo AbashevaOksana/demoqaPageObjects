@@ -1,8 +1,10 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import data.DataFaker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.CheckResultComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,76 +17,39 @@ import static utils.RandomUtils.*;
 public class RegistrationWithPageObjectsAndFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
+    DataFaker dataFaker = new DataFaker();
+
 
     @Test
-    void fillFormTest() {
+    void fillFormTestFaker() {
 
-        Faker faker = new Faker(new Locale("en-GB"));
-
-        String firstName = faker.name().firstName();
-
-        String lastName = faker.name().lastName();
-
-        String userEmail = faker.internet().emailAddress();
-
-        String streetAddress = faker.address().streetAddress();
-
-        //state & city
-        Map<String, List<String>> stateCityMap = Map.of(
-                "NCR", List.of("Delhi", "Gurgaon", "Noida"),
-                "Uttar Pradesh", List.of("Agra", "Lucknow", "Merrut"),
-                "Haryana", List.of("Karnal", "Panipat"),
-                "Rajasthan", List.of("Jaipur", "Jaiselmer")
-        );
-        List<String> states = new ArrayList<>(stateCityMap.keySet());
-        String state = states.get(faker.random().nextInt(states.size()));
-        List<String> cities = stateCityMap.get(state);
-        String city = cities.get(faker.random().nextInt(cities.size()));
-        String stateAndCity = state + " " + city;
-
-        //календарь
-        String birthDay = String.valueOf(faker.number().numberBetween(1, 28));
-        String birthMonth = faker.options().option("January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December");
-        String birthYear = String.valueOf(faker.number().numberBetween(1950, 2005));
-        String formattedDay = birthDay.length() == 1 ? "0" + birthDay : birthDay;
-        String formattedBirthDate = formattedDay + " " + birthMonth + "," + birthYear;
-
-        String genderInput = getRandomGender();
-
-        String userNumber = getRandomStringNumber(10);
-
-        String subjectsInput = getRandomSubjectsInput();
-
-        String hobbiesWrapper = getRandomHobbiesWrapper();
-
-        String uploadPicture = getRandomUploadPicture();
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setUserEmail(userEmail)
-                .setGenderInput(genderInput)
-                .setUserNumber(userNumber)
-                .setBirthDay(birthDay, birthMonth, birthYear)
-                .setSubjectsInput(subjectsInput)
-                .setHobbiesWrapper(hobbiesWrapper)
-                .setUploadPicture(uploadPicture)
-                .setCurrentAddress(streetAddress)
-                .setState(state)
-                .setCity(city)
-                .checkFormAppears();
-        registrationPage.checkResult("Student Name", firstName+ " " +lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", genderInput)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", formattedBirthDate)
-                .checkResult("Subjects", subjectsInput )
-                .checkResult("Hobbies", hobbiesWrapper)
-                .checkResult("Picture", uploadPicture)
-                .checkResult("Address", streetAddress)
-                .checkResult("State and City", stateAndCity);
-        registrationPage.closeLargeModal();
+                .setFirstName(dataFaker.firstName)
+                .setLastName(dataFaker.lastName)
+                .setUserEmail(dataFaker.email)
+                .setGenderInput(dataFaker.gender)
+                .setUserNumber(dataFaker.phone)
+                .setBirthDay(dataFaker.day, dataFaker.month, dataFaker.year)
+                .setSubjectsInput(dataFaker.subject)
+                .setHobbiesWrapper(dataFaker.hobby)
+                .setUploadPicture(dataFaker.picture)
+                .setCurrentAddress(dataFaker.address)
+                .setState(dataFaker.state)
+                .setCity(dataFaker.city);
+        checkResultComponent.checkFormAppears()
+                .checkResultReady("Student Name", dataFaker.firstName+ " " +DataFaker.lastName)
+                .checkResultReady("Student Email", dataFaker.email)
+                .checkResultReady("Gender", dataFaker.gender)
+                .checkResultReady("Mobile", dataFaker.phone)
+                .checkResultReady("Date of Birth", dataFaker.formattedBirthDate)
+                .checkResultReady("Subjects", dataFaker.subject)
+                .checkResultReady("Hobbies", dataFaker.hobby)
+                .checkResultReady("Picture", dataFaker.picture)
+                .checkResultReady("Address", dataFaker.address)
+                .checkResultReady("State and City", dataFaker.stateAndCity);
+
     }
 }
 

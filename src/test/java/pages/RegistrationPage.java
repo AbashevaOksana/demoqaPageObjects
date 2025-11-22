@@ -120,13 +120,13 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage checkFormAppears (){
-        submit.click();
-        modal.should(appear);
-        example.shouldHave(text("Thanks for submitting the form"));
-
-        return this;
-    }
+//    public RegistrationPage checkFormAppears (){
+//        submit.click();
+//        modal.should(appear);
+//        example.shouldHave(text("Thanks for submitting the form"));
+//
+//        return this;
+//    }
     public RegistrationPage checkResult (String key, String value){
         checkResultComponent.checkResultReady(key,  value); // Student Name
 
