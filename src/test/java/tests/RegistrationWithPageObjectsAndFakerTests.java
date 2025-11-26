@@ -1,18 +1,8 @@
 package tests;
-
-import com.github.javafaker.Faker;
 import data.DataFaker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.CheckResultComponent;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import static utils.RandomUtils.*;
-
 
 public class RegistrationWithPageObjectsAndFakerTests extends TestBase {
 
