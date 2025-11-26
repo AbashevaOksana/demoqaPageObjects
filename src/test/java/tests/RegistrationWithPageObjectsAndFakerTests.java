@@ -5,7 +5,6 @@ import pages.RegistrationPage;
 import pages.components.CheckResultComponent;
 
 public class RegistrationWithPageObjectsAndFakerTests extends TestBase {
-
     RegistrationPage registrationPage = new RegistrationPage();
     CheckResultComponent checkResultComponent = new CheckResultComponent();
     DataFaker dataFaker = new DataFaker();
