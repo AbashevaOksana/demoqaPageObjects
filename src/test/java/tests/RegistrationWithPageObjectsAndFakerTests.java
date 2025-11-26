@@ -20,12 +20,10 @@ public class RegistrationWithPageObjectsAndFakerTests extends TestBase {
     CheckResultComponent checkResultComponent = new CheckResultComponent();
     DataFaker dataFaker = new DataFaker();
 
-
     @Test
     void fillFormTestFaker() {
-
-
         registrationPage.openPage()
+                .delAds()
                 .setFirstName(dataFaker.firstName)
                 .setLastName(dataFaker.lastName)
                 .setUserEmail(dataFaker.email)
@@ -49,7 +47,6 @@ public class RegistrationWithPageObjectsAndFakerTests extends TestBase {
                 .checkResultReady("Picture", dataFaker.picture)
                 .checkResultReady("Address", dataFaker.address)
                 .checkResultReady("State and City", dataFaker.stateAndCity);
-
     }
 }
 

@@ -27,10 +27,6 @@ public class RegistrationPage {
         state = $("#state"),
         stateCity = $("#stateCity-wrapper"),
         city = $("#city"),
-        submit = $("#submit"),
-        modal = $(".modal-dialog"),
-        example = $("#example-modal-sizes-title-lg"),
-        tableResponsive = $(".table-responsive"),
         closeLarge = $("#closeLargeModal");
 
     CalendarComponent calendarComponent =  new CalendarComponent();
