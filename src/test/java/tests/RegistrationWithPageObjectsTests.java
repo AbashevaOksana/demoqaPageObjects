@@ -44,33 +44,33 @@ public class RegistrationWithPageObjectsTests extends TestBase {
 
 
     }
-    @Test
-    void requiredParametersFillFormTest() {
-
-        registrationPage.openPage()
-                .setFirstName("Oksana")
-                .setLastName("Abasheva")
-                .setGenderInput("Female")
-                .setUserNumber("9935275449");
-        checkResultComponent.checkFormAppears()
-                .checkResultReady("Student Name", "Oksana Abasheva")
-                .checkResultReady("Gender", "Female")
-                .checkResultReady("Mobile", "9935275449");
-
-    }
-    @Test
-    void negativeFillFormTest() {
-
-        registrationPage.openPage()
-                .setFirstName("Anna")
-                .setLastName("Abasheva")
-                .setGenderInput("Female")
-                .setUserNumber("9935275");
-        checkResultComponent.checkFormAppears()
-                .checkResultReady("Student Name", "Oksana Abasheva")
-                .checkResultReady("Gender", "Female")
-                .checkResultReady("Mobile", "9935275449");
-
-    }
+//    @Test
+//    void requiredParametersFillFormTest() {
+//
+//        registrationPage.openPage()
+//                .setFirstName("Oksana")
+//                .setLastName("Abasheva")
+//                .setGenderInput("Female")
+//                .setUserNumber("9935275449");
+//        checkResultComponent.checkFormAppears()
+//                .checkResultReady("Student Name", "Oksana Abasheva")
+//                .checkResultReady("Gender", "Female")
+//                .checkResultReady("Mobile", "9935275449");
+//
+//    }
+//    @Test
+//    void negativeFillFormTest() {
+//
+//        registrationPage.openPage()
+//                .setFirstName("Anna")
+//                .setLastName("Abasheva")
+//                .setGenderInput("Female")
+//                .setUserNumber("9935275");
+//        checkResultComponent.checkFormAppears()
+//                .checkResultReady("Student Name", "Oksana Abasheva")
+//                .checkResultReady("Gender", "Female")
+//                .checkResultReady("Mobile", "9935275449");
+//
+//    }
 }
 

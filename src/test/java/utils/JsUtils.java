@@ -1,10 +1,12 @@
 package utils;
 
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.*;
 
 public class JsUtils {
+
     public static void removeBanners() {
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
+        // Просто выполняем JavaScript напрямую
+        executeJavaScript("document.querySelector('footer')?.remove()");
+        executeJavaScript("document.getElementById('fixedban')?.remove()");
     }
 }
