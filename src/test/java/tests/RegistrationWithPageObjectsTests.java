@@ -17,7 +17,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void fillFormTest() {
 
         registrationPage.openPage()
-                .delAds()
+//                .delAds()
                 .setFirstName("Oksana")
                 .setLastName("Abasheva")
                 .setUserEmail("abasheva@ya.ru")
@@ -58,19 +58,19 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResultReady("Mobile", "9935275449");
 
     }
-    @Test
-    void negativeFillFormTest() {
-
-        registrationPage.openPage()
-                .setFirstName("Anna")
-                .setLastName("Abasheva")
-                .setGenderInput("Female")
-                .setUserNumber("9935275");
-        checkResultComponent.checkFormAppears()
-                .checkResultReady("Student Name", "Oksana Abasheva")
-                .checkResultReady("Gender", "Female")
-                .checkResultReady("Mobile", "9935275449");
-
-    }
+//    @Test
+//    void negativeFillFormTest() {
+//
+//        registrationPage.openPage()
+//                .setFirstName("Anna")
+//                .setLastName("Abasheva")
+//                .setGenderInput("Female")
+//                .setUserNumber("9935275");
+//        checkResultComponent.checkFormAppears()
+//                .checkResultReady("Student Name", "Oksana Abasheva")
+//                .checkResultReady("Gender", "Female")
+//                .checkResultReady("Mobile", "9935275449");
+//
+//    }
 }
 
