@@ -15,8 +15,8 @@ public class RegistrationWithTestsDataTest extends TestBase {
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        //executeJavaScript("$('#fixedban').remove()");
-        //executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
